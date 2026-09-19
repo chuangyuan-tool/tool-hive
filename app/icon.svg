@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <!-- ToolHive icon v4: one connected bold silhouette (hermes-style),
+       profile read with one hand holding an open book, black & white, minimal -->
+  <rect x="0" y="0" width="1024" height="1024" rx="230" fill="#000000"/>
+
+  <g fill="#ffffff">
+    <!-- torso (top overlaps the head so the figure is one connected blob) -->
+    <path d="M 256 724 L 256 656 Q 256 472 390 472 Q 524 472 524 656 L 524 724 Z"/>
+    <!-- head (shifted right of torso center = slight forward lean, reading pose) -->
+    <circle cx="430" cy="370" r="115"/>
+
+    <!-- one arm reaching forward, round cap = the hand, ending on the book spine -->
+    <path d="M 480 540 Q 600 565 650 630" fill="none"
+          stroke="#ffffff" stroke-width="80" stroke-linecap="round"/>
+
+    <!-- open book: two pages meeting at a black spine gap (wide enough to read at 16px) -->
+    <path d="M 508 634 L 650 600 L 650 722 L 496 708 Z"/>
+    <path d="M 674 600 L 818 634 L 826 708 L 674 722 Z"/>
+  </g>
+</svg>

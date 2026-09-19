@@ -1,0 +1,18 @@
+node_modules
+.next
+.next.bak-*
+out
+.env
+.env.local
+*.log
+# 本地备份目录 / 启动脚本（部署不需要，不推）
+_disabled-*
+_encoding-*
+.vercel
+*.vbs
+*.bat
+# 本地运维脚本（纯本地用，不推）
+start-website.cmd
+stop-website.cmd
+toolhive-watchdog.js
+icon/Build-Ico.ps1
