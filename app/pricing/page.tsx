@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useI18n } from '@/components/I18nProvider';
 
 const USDT_ADDRESS = 'TLMkaNbVeoTDcij65dkh2VKwSQ862oRGBx';
-// ÊÕ¿îÕ¼Î»£ºÄãÔÚ creem.io ×¢²áÄÃµ½ Pro / Team Á½Ìõ checkout Á´½Óºó·¢ÎÒ£¬ÎÒÌî½øÀ´°´Å¥¼´³öÏÖ
+// ï¿½Õ¿ï¿½Õ¼Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ creem.io ×¢ï¿½ï¿½ï¿½Ãµï¿½ Pro / Team ï¿½ï¿½ï¿½ï¿½ checkout ï¿½ï¿½ï¿½Óºï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 const CREEM_PRO_LINK = '';
 const CREEM_TEAM_LINK = '';
 
@@ -119,6 +119,8 @@ export default function PricingPage() {
             </p>
           )}
         </div>
+
+        <p className="text-center text-sm mt-4" style={{ color: '#666' }}>Payment will be available after store verification.</p>
 
         <div className="border border-gray-200 rounded-xl p-4">
           <div className="text-sm text-gray-600 mb-2">{t.payMore}</div>
