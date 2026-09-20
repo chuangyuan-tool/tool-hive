@@ -1,11 +1,11 @@
-ï»¿'use client';
+'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
 import { useI18n } from '@/components/I18nProvider';
 
 const USDT_ADDRESS = 'TLMkaNbVeoTDcij65dkh2VKwSQ862oRGBx';
-// æ”¶æ¬¾å ä½ï¼šä½ åœ¨ creem.io æ³¨å†Œæ‹¿åˆ° Pro / Team ä¸¤æ¡ checkout é“¾æ¥åå‘æˆ‘ï¼Œæˆ‘å¡«è¿›æ¥æŒ‰é’®å³å‡ºç°
+// ÊÕ¿îÕ¼Î»£ºÄãÔÚ creem.io ×¢²áÄÃµ½ Pro / Team Á½Ìõ checkout Á´½Óºó·¢ÎÒ£¬ÎÒÌî½øÀ´°´Å¥¼´³öÏÖ
 const CREEM_PRO_LINK = '';
 const CREEM_TEAM_LINK = '';
 
@@ -58,7 +58,7 @@ export default function PricingPage() {
             <ul className="space-y-3 mb-8">
               {plan.features.map((f) => (
                 <li key={f} className="flex items-center text-gray-600 text-sm">
-                  <span className="text-green-500 mr-2">{'âœ“'}</span>
+                  <span className="text-green-500 mr-2">{'?'}</span>
                   {f}
                 </li>
               ))}
@@ -91,25 +91,25 @@ export default function PricingPage() {
               onClick={copyUsdt}
               className="shrink-0 px-4 py-2.5 rounded-lg bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium transition-colors"
             >
-              {copied ? t.payCopied + ' âœ“' : t.payCopy}
+              {copied ? t.payCopied + ' ?' : t.payCopy}
             </button>
           </div>
         </div>
 
         <div className="border border-gray-200 rounded-xl p-4 mb-6">
-          <div className="text-sm font-medium text-gray-700 mb-2">ğŸ’³ Pay by Card / Crypto (Creem)</div>
+          <div className="text-sm font-medium text-gray-700 mb-2">?? Pay by Card / Crypto (Creem)</div>
           {CREEM_PRO_LINK || CREEM_TEAM_LINK ? (
             <div className="space-y-2">
               {CREEM_PRO_LINK ? (
                 <a href={CREEM_PRO_LINK} target="_blank" rel="noopener noreferrer"
                   className="inline-block px-4 py-2.5 rounded-lg bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium transition-colors">
-                  âš¡ Upgrade to Pro ($9/mo)
+                  ? Upgrade to Pro ($9/mo)
                 </a>
               ) : null}
               {CREEM_TEAM_LINK ? (
                 <a href={CREEM_TEAM_LINK} target="_blank" rel="noopener noreferrer"
                   className="inline-block px-4 py-2.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium transition-colors">
-                  âš¡ Upgrade to Team ($29/mo)
+                  ? Upgrade to Team ($29/mo)
                 </a>
               ) : null}
             </div>
@@ -131,6 +131,25 @@ export default function PricingPage() {
         </div>
 
         <p className="text-xs text-gray-400 text-center mt-5">{t.payNote}</p>
+      </div>
+
+      <div className="mt-10 max-w-2xl mx-auto">
+        <h3 className="text-lg font-semibold text-gray-900">Contact &amp; Support</h3>
+        <p className="text-gray-600 mt-2">If you have any questions, please email us: <a href="mailto:15981927999@163.com" className="text-blue-600 hover:underline">15981927999@163.com</a></p>
+      </div>
+
+      <div className="mt-10 max-w-2xl mx-auto text-sm text-gray-600">
+        <h3 className="text-lg font-semibold text-gray-900 mb-3">Terms of Service</h3>
+        <p className="mb-2">All products are digital virtual goods, one-time purchase. No recurring subscription.</p>
+        <p className="mb-2"><b>Refund Policy:</b> Full refund within 14 days of purchase if the service cannot be delivered. Once the digital service is activated and used, refunds will not be accepted.</p>
+        <p className="mb-2"><b>Disclaimer:</b> The service is provided "as is". We do not guarantee the service will be uninterrupted or error-free. We are not liable for any indirect losses caused by using this service.</p>
+
+        <h3 className="text-lg font-semibold text-gray-900 mt-6 mb-3">Privacy Policy</h3>
+        <p>We only collect necessary information for order processing. Your personal data will not be sold or shared with third parties for marketing purposes. For privacy questions, contact us: <a href="mailto:15981927999@163.com" className="text-blue-600 hover:underline">15981927999@163.com</a></p>
+      </div>
+
+      <div className="mt-8 text-center text-xs text-gray-400">
+        <p>Terms of Service | Privacy Policy</p>
       </div>
     </div>
   );
