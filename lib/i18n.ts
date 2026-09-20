@@ -56,7 +56,7 @@ export const dictionaries = {
     payPaypal: 'PayPal Payment',
     payPaypalPro: 'Pay $9.00 with PayPal',
     payPaypalTeam: 'Pay $29.00 with PayPal',
-    payNote: 'PayPal is a one-time payment; please ensure you select TRC20 network for USDT.',
+    payNote: 'Please ensure you select TRC20 network for USDT.',
     payFallback: 'PayPal page not loading? Use USDT below.',
     payMore: 'Want to pay with credit/debit card? Email us and we will send a secure payment link.',
     payUsdt: 'USDT (TRC20 Network) - Copy this address',
