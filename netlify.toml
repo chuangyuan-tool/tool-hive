@@ -1,0 +1,9 @@
+# Netlify configuration
+# Redirect the auto-generated Netlify subdomain to the custom domain,
+# so crawlers index toolhive.com.cn only.
+
+[[redirects]]
+  from = "/*"
+  to = "https://toolhive.com.cn/:splat"
+  status = 301
+  force = true
