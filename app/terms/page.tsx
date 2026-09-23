@@ -20,7 +20,11 @@ export default function TermsPage() {
         <h2 className="text-lg font-semibold text-gray-900 mt-6 mb-2">5. Disclaimer</h2>
         <p className="text-gray-600 mb-3">We do not guarantee that the service will always be uninterrupted or error-free. We shall not be liable for any indirect loss caused by using our tools.</p>
 
-        <h2 className="text-lg font-semibold text-gray-900 mt-6 mb-2">6. Contact</h2>
+        <h2 className="text-lg font-semibold text-gray-900 mt-6 mb-2">6. Payment &amp; Billing</h2>
+        <p className="text-gray-600 mb-3">Some of our plans are recurring monthly subscriptions. By subscribing, you authorize us to charge your payment method on a monthly basis until you cancel your subscription. You may cancel your subscription at any time from your account dashboard, and your access will remain active until the end of your current billing period. No partial refunds will be issued for unused time in the billing cycle.</p>
+        <p className="text-gray-600 mb-3">We also offer one-time purchase products, which are charged once only and will not trigger recurring charges.</p>
+
+        <h2 className="text-lg font-semibold text-gray-900 mt-6 mb-2">7. Contact</h2>
         <p className="text-gray-600 mb-3">Support Email: <a href="mailto:15981927999@163.com" className="text-blue-600 hover:underline">15981927999@163.com</a></p>
       </div>
     </div>
