@@ -1,14 +1,17 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-interface PaymentSuccessProps {
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
+export default function PaymentSuccessPage() {
+  const [plan, setPlan] = useState('pro');
+  const [orderId, setOrderId] = useState('');
 
-export default function PaymentSuccessPage({ searchParams }: PaymentSuccessProps) {
-  const plan = searchParams?.plan || 'pro';
-  const orderId = searchParams?.order_id || 'ORD-' + Date.now();
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setPlan(params.get('plan') || 'pro');
+    setOrderId(params.get('order_id') || 'ORD-' + Date.now());
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
