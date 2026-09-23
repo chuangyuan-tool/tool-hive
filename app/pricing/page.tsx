@@ -142,7 +142,7 @@ export default function PricingPage() {
 
       <div className="mt-10 max-w-2xl mx-auto text-sm text-gray-600">
         <h3 className="text-lg font-semibold text-gray-900 mb-3">Terms of Service</h3>
-        <p className="mb-2">All products are digital virtual goods, one-time purchase. No recurring subscription.</p>
+        <p className="mb-2">All products are digital virtual goods. Our Pro and Team plans are recurring monthly subscriptions, and we also offer one-time purchase products. Subscriptions renew monthly until you cancel; you can cancel anytime from your account dashboard and keep access until the end of the current billing period. See our <a href="/terms" className="text-blue-600 hover:underline">Terms of Service</a> for billing and refund details.</p>
         <p className="mb-2"><b>Refund Policy:</b> Full refund within 14 days of purchase if the service cannot be delivered. Once the digital service is activated and used, refunds will not be accepted.</p>
         <p className="mb-2"><b>Disclaimer:</b> The service is provided "as is". We do not guarantee the service will be uninterrupted or error-free. We are not liable for any indirect losses caused by using this service.</p>
 
@@ -151,7 +151,7 @@ export default function PricingPage() {
       </div>
 
       <div className="mt-8 text-center text-xs text-gray-400">
-        <p>Terms of Service | Privacy Policy</p>
+        <p><a href="/terms" className="text-blue-600 hover:underline">Terms of Service</a> | <a href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</a></p>
       </div>
     </div>
   );
