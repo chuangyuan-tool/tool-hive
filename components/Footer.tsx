@@ -45,7 +45,11 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-100 mt-8 pt-6 text-center text-sm text-gray-400">
-          &copy; 2026 {t.copyright}
+          <p>&copy; 2026 ToolHive. All rights reserved. Operated by ToolHive Team. Contact: <a href="mailto:15981927999@163.com" className="text-gray-500 hover:text-gray-700 underline">15981927999@163.com</a></p>
+          <p className="mt-2 space-x-4">
+            <a href="/privacy-policy" className="text-gray-400 hover:text-gray-600 text-xs underline">Privacy Policy</a>
+            <a href="/terms-of-service" className="text-gray-400 hover:text-gray-600 text-xs underline">Terms of Service</a>
+          </p>
         </div>
       </div>
     </footer>

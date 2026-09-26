@@ -56,6 +56,12 @@ export default function Home() {
         <p className="text-gray-600 mb-8">{t.ctaSub}</p>
         <Link href="/tools" className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-medium transition-colors">{t.ctaBtn}</Link>
       </div>
+
+      <div className="text-center pb-4">
+        <p className="text-xs text-gray-400 max-w-xl mx-auto">
+          ToolHive (toolhive.com.cn) is independently operated, and has no affiliation with toolhive.com or other open-source projects named ToolHive.
+        </p>
+      </div>
     </div>
   );
 }
