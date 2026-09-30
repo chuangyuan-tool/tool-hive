@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { generateListing } from '@/lib/ai-client';
 
 export default function AiListing() {
   const [product, setProduct] = useState({ name: '', category: '', features: '', brand: '', price: '' });
@@ -21,12 +22,7 @@ export default function AiListing() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('/api/ai/listing', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ product, platform, langs }),
-      });
-      const data = await res.json();
+      const data = await generateListing({ product, platform, langs });
       if (data.success) {
         setResult(data.data);
       } else {

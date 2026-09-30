@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { generateProductImage } from '@/lib/ai-client';
 
 export default function AiProductImage() {
   const [image, setImage] = useState<string | null>(null);
@@ -23,12 +24,7 @@ export default function AiProductImage() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('/api/ai/image', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ image: image.split(',')[1], mode, style }),
-      });
-      const data = await res.json();
+      const data = await generateProductImage({ mode, style });
       if (data.success) {
         setResult(data.data);
       } else {
