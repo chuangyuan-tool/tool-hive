@@ -8,11 +8,17 @@
     "start": "next start"
   },
   "dependencies": {
+    "fast-xml-parser": "^5.11.2",
+    "js-yaml": "^5.4.2",
+    "jsqr": "^1.4.0",
+    "marked": "^18.0.14",
     "next": "14.2.0",
+    "qrcode-generator": "^2.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
