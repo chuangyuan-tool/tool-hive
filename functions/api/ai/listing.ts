@@ -85,7 +85,7 @@ Return ONLY valid JSON: {"title":"","description":"","bullets":[],"keywords":[]}
       }
       const raw = result.data.choices?.[0]?.message?.content || '{}';
       const jsonMatch = raw.match(/\{[\s\S]*\}/);
-      results[lang] = jsonMatch ? JSON.parse(jsonMatch[0]) : { raw };
+      try { results[lang] = jsonMatch ? JSON.parse(jsonMatch[0]) : { raw }; } catch { results[lang] = { parseError: 'Invalid JSON in AI response', raw: raw.substring(0, 200) }; }
     }
 
     return jsonResp({ success: true, data: results });
