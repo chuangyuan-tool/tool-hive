@@ -47,7 +47,7 @@ async function safeFetch(url: string, opts: RequestInit, retries = 3): Promise<{
 
 export async function onRequestPost(context: { request: Request; env: Record<string, string> }): Promise<Response> {
   try {
-    const body = await context.request.json();
+    const reqText = await context.request.text(); let body: any; try { body = JSON.parse(reqText); } catch (pe: any) { return jsonResp({ error: 'Invalid request JSON: ' + pe.message, raw: reqText.substring(0, 200) }, 400); }
     const { product, platform = 'amazon', langs = ['en'] } = body;
 
     if (!product?.name) {
@@ -90,6 +90,6 @@ Return ONLY valid JSON: {"title":"","description":"","bullets":[],"keywords":[]}
 
     return jsonResp({ success: true, data: results });
   } catch (e: any) {
-    return jsonResp({ error: e?.message || 'Internal error' }, 500);
+    return jsonResp({ error: e?.message || 'Internal error', stack: (e as any)?.stack?.substring(0, 300) || '' }, 500);
   }
 }
