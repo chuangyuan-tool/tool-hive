@@ -1,9 +1,9 @@
-// Cloudflare Pages Function — POST /api/ai/image
+﻿// Cloudflare Pages Function — POST /api/ai/image
 // 生产环境由 CF 边缘执行；本地 dev 走 app/api/ai/image/route.ts，逻辑完全一致。
 // 后端：Agnes Images（agnes-image-2.5-flash，text-to-image）
 
 const AGNES_BASE = 'https://apihub.agnes-ai.com/v1';
-const AGNES_KEY = 'sk-IbgczHpeYRe3LIP3xZlWwcf35cHxxIrrqpGPeCwDr6zAqBDK';
+// key via context.env.AGNES_API_KEY
 const AGNES_MODEL = 'agnes-image-2.5-flash';
 
 const MODE_PROMPTS: Record<string, string> = {
@@ -20,7 +20,7 @@ function jsonResp(payload: unknown, status = 200): Response {
   });
 }
 
-export async function onRequestPost(context: { request: Request }): Promise<Response> {
+export async function onRequestPost(context: { request: Request; env: Record<string, string> }): Promise<Response> {
   try {
     const body = await context.request.json().catch(() => ({}));
     const { mode = 'white-bg', style } = body;
@@ -37,7 +37,7 @@ export async function onRequestPost(context: { request: Request }): Promise<Resp
       if (attempt > 0) await new Promise(r => setTimeout(r, 3000));
       const resp = await fetch(`${AGNES_BASE}/images/generations`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${AGNES_KEY}` },
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${context.env.AGNES_API_KEY}` },
         body: JSON.stringify({ model: AGNES_MODEL, prompt, n: 1 }),
       });
       data = await resp.json();

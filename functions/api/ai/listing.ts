@@ -1,10 +1,10 @@
-// Cloudflare Pages Function — POST /api/ai/listing
+﻿// Cloudflare Pages Function — POST /api/ai/listing
 // 生产环境（toolhive.com.cn / tool-hive.pages.dev）由 CF 边缘执行本文件；
 // 本地 npm run dev 走 app/api/ai/listing/route.ts，逻辑完全一致。
 // 后端：Agnes API（chat，agnes-3.0-flash）
 
 const AGNES_BASE = 'https://apihub.agnes-ai.com/v1';
-const AGNES_KEY = 'sk-IbgczHpeYRe3LIP3xZlWwcf35cHxxIrrqpGPeCwDr6zAqBDK';
+// key via context.env.AGNES_API_KEY
 const MODEL = 'agnes-3.0-flash';
 
 const LANG_NAMES: Record<string, string> = {
@@ -26,7 +26,7 @@ function jsonResp(payload: unknown, status = 200): Response {
   });
 }
 
-export async function onRequestPost(context: { request: Request }): Promise<Response> {
+export async function onRequestPost(context: { request: Request; env: Record<string, string> }): Promise<Response> {
   try {
     const body = await context.request.json();
     const { product, platform = 'amazon', langs = ['en'] } = body;
@@ -54,7 +54,7 @@ Return ONLY valid JSON: {"title":"","description":"","bullets":[],"keywords":[]}
 
       const resp = await fetch(`${AGNES_BASE}/chat/completions`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${AGNES_KEY}` },
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${context.env.AGNES_API_KEY}` },
         body: JSON.stringify({ model: MODEL, messages: [{ role: 'user', content: prompt }], temperature: 0.7 }),
       });
       const data = await resp.json();
