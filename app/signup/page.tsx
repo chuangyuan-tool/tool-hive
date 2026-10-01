@@ -1,6 +1,17 @@
-import { redirect } from "next/navigation";
+'use client';
 
-// /signup 为旧入口，统一重定向到 /register（避免 404）
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+// /signup 旧入口：静态导出(output:export)下 redirect() 无法生成 301，改用客户端跳转 /register
 export default function SignupPage() {
-  redirect("/register");
+  const router = useRouter();
+  useEffect(() => {
+    router.replace('/register');
+  }, []);
+  return (
+    <div style={{ padding: 40, fontFamily: 'sans-serif', color: '#333' }}>
+      Redirecting to <a href="/register">/register</a>…
+    </div>
+  );
 }
