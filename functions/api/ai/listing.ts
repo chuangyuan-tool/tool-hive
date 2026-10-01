@@ -35,6 +35,7 @@ async function safeFetch(url: string, opts: RequestInit, retries = 3): Promise<{
       let data: any;
       try { data = JSON.parse(text); } catch { data = { raw: text.substring(0, 200) }; }
       const isWaf = !lastResp.ok && /error code: 1\d{3}/.test(data.raw || '');
+      if (isWaf && i < retries - 1) { lastResp = null; continue; }
       return { ok: lastResp.ok, status: lastResp.status, data, wafBlocked: isWaf };
     } catch (e: any) {
       if (i < retries - 1) continue;
