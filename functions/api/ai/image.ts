@@ -1,6 +1,6 @@
-﻿// Cloudflare Pages Function — POST /api/ai/image
-// 生产环境由 CF 边缘执行；本地 dev 走 app/api/ai/image/route.ts，逻辑完全一致。
-// 后端：Agnes Images（agnes-image-2.5-flash，text-to-image）
+﻿// Cloudflare Pages Function - POST /api/ai/image
+// CF edge; local dev uses app/api/ai/image/route.ts
+// Backend: Agnes Images (agnes-image-2.5-flash, text-to-image)
 
 const AGNES_BASE = 'https://apihub.agnes-ai.com/v1';
 // key via context.env.AGNES_API_KEY
@@ -20,36 +20,53 @@ function jsonResp(payload: unknown, status = 200): Response {
   });
 }
 
+async function safeFetch(url: string, opts: RequestInit, retries = 3): Promise<{ ok: boolean; status: number; data: any; wafBlocked: boolean }> {
+  let lastResp: Response | null = null;
+  for (let i = 0; i < retries; i++) {
+    if (i > 0) await new Promise(r => setTimeout(r, 2000));
+    try {
+      lastResp = await fetch(url, opts);
+      const text = await lastResp.text();
+      let data: any;
+      try { data = JSON.parse(text); } catch { data = { raw: text.substring(0, 200) }; }
+      const isWaf = !lastResp.ok && /error code: 1\d{3}/.test(data.raw || '');
+      return { ok: lastResp.ok, status: lastResp.status, data, wafBlocked: isWaf };
+    } catch (e: any) {
+      if (i < retries - 1) continue;
+      return { ok: false, status: 0, data: { message: e?.message }, wafBlocked: false };
+    }
+  }
+  return { ok: false, status: lastResp?.status || 0, data: {}, wafBlocked: false };
+}
+
 export async function onRequestPost(context: { request: Request; env: Record<string, string> }): Promise<Response> {
   try {
     const body = await context.request.json().catch(() => ({}));
     const { mode = 'white-bg', style } = body;
 
     const parts = [MODE_PROMPTS[mode] || MODE_PROMPTS['white-bg']];
-    if (style && String(style).trim()) parts.push(String(style).trim());
+    if (style && String(style).trim()) parts.push(String(style.trim()));
     parts.push('photorealistic product image');
     const prompt = parts.join(', ');
 
-    // Agnes 偶发 502（瞬态），失败后等 3s 自动重试一次
-    let data: any = null;
-    let lastErr = '';
-    for (let attempt = 0; attempt < 2; attempt++) {
-      if (attempt > 0) await new Promise(r => setTimeout(r, 3000));
-      const resp = await fetch(`${AGNES_BASE}/images/generations`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${context.env.AGNES_API_KEY}` },
-        body: JSON.stringify({ model: AGNES_MODEL, prompt, n: 1 }),
-      });
-      data = await resp.json();
-      lastErr = data?.error?.message || '';
-      if (data?.data?.[0]?.url) break;
+    const result = await safeFetch(`${AGNES_BASE}/images/generations`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${context.env.AGNES_API_KEY}` },
+      body: JSON.stringify({ model: AGNES_MODEL, prompt, n: 1 }),
+    });
+
+    if (result.wafBlocked) {
+      return jsonResp({ success: false, waf: true, message: 'CF edge WAF blocked (1015), client fallback should handle' }, 502);
     }
-    const url = data?.data?.[0]?.url;
+    if (!result.ok) {
+      return jsonResp({ success: false, message: result.data?.error?.message || `HTTP ${result.status}` }, 502);
+    }
+    const url = result.data?.data?.[0]?.url;
     if (!url) {
-      return jsonResp({ success: false, message: lastErr || 'Image generation failed' }, 502);
+      return jsonResp({ success: false, message: result.data?.error?.message || 'No image URL in response' }, 502);
     }
     return jsonResp({ success: true, data: url, mode, style });
   } catch (e: any) {
-    return jsonResp({ error: e?.message }, 500);
+    return jsonResp({ error: e?.message || 'Internal error' }, 500);
   }
 }
