@@ -26,6 +26,7 @@ export default function PricingPage() {
     }
   };
   const plans = [
+    // 免费档：CTA 跳 /tools（引导先体验工具、非付费入口）；付费走下方 Basic/Pro 的 Creem 按钮。收费闭环 = 免费 10 次/天 → 升级解锁无限 + AI
     { key: 'free', name: 'Free', price: '$0', desc: t.freeDesc, features: [t.featBasic, t.featDaily, t.featCommunity], cta: t.ctaFree, highlight: true, pay: false },
     { key: 'pro', name: 'ToolHive Basic', price: '$9', desc: t.proDesc, features: [t.featEverything, t.featUnlimited, t.featAi, t.featNoAds, t.featPriority], cta: t.ctaPro, highlight: false, pay: true, link: CREEM_PRO_LINK },
     { key: 'team', name: 'ToolHive Pro Plan', price: '$29', desc: t.teamDesc, features: [t.featEverything, t.featSeats, t.featApi, t.featWorkspace], cta: t.ctaTeam, highlight: false, pay: true, link: CREEM_TEAM_LINK },
