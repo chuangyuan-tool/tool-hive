@@ -3,7 +3,7 @@
 // 后端：Agnes Images（agnes-image-2.5-flash，text-to-image）
 
 const AGNES_BASE = 'https://apihub.agnes-ai.com/v1';
-const AGNES_KEY = 'sk-IbgczHpeYRe3LIP3xZlWwcf35cHxxIrrqpGPeCwDr6zAqBDK';
+const AGNES_KEY = process.env.AGNES_API_KEY;
 const AGNES_MODEL = 'agnes-image-2.5-flash';
 
 const MODE_PROMPTS: Record<string, string> = {

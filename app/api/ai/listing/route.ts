@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // 线上生产走 Cloudflare Pages Function（functions/api/ai/listing.ts），本文件仅供本地 dev
 
 const RELAY_BASE = 'https://apihub.agnes-ai.com/v1';
-const API_KEY = 'sk-IbgczHpeYRe3LIP3xZlWwcf35cHxxIrrqpGPeCwDr6zAqBDK';
+const API_KEY = process.env.AGNES_API_KEY;
 const MODEL = 'agnes-3.0-flash';
 
 const LANG_NAMES: Record<string, string> = {

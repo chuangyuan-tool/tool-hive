@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // 线上生产走 Cloudflare Pages Function（functions/api/ai/image.ts），本文件仅供本地 dev。
 
 const AGNES_BASE = 'https://apihub.agnes-ai.com/v1';
-const AGNES_KEY = 'sk-IbgczHpeYRe3LIP3xZlWwcf35cHxxIrrqpGPeCwDr6zAqBDK';
+const AGNES_KEY = process.env.AGNES_API_KEY;
 const AGNES_MODEL = 'agnes-image-2.5-flash';
 
 const MODE_PROMPTS: Record<string, string> = {
