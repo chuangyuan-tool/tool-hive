@@ -4,7 +4,7 @@
 // 后端：Agnes API（chat，agnes-3.0-flash）
 
 const AGNES_BASE = 'https://apihub.agnes-ai.com/v1';
-const AGNES_KEY = process.env.AGNES_API_KEY;
+const AGNES_KEY = 'sk-IbgczHpeYRe3LIP3xZlWwcf35cHxxIrrqpGPeCwDr6zAqBDK';
 const MODEL = 'agnes-3.0-flash';
 
 const LANG_NAMES: Record<string, string> = {
