@@ -18,4 +18,10 @@ export const tools: Tool[] = [
   { id: 'ai-listing', name: 'AI Listing Generator', description: 'Generate multi-language product listings for Amazon, Shopify, TikTok and Temu in one click.', category: 'Marketing', icon: '✨', url: '/tools/ai-listing', popular: true },
   { id: 'ai-product-image', name: 'AI Product Image', description: 'Turn a product photo into clean white-background, scene or high-res images with AI.', category: 'Design', icon: '🖼️', url: '/tools/ai-product-image', popular: true },
   { id: 'ecom-automation', name: 'E-commerce Automation', description: 'Pick ready-made workflows — order sync, review replies, daily reports, price monitoring. No coding.', category: 'Marketing', icon: '⚡', url: '/tools/ecom-automation', popular: false },
+  { id: 'hash-calculator', name: 'Hash Calculator', description: 'Generate MD5, SHA-1, SHA-256 and SHA-512 hashes instantly in your browser.', category: 'Developer', icon: '#', url: '/tools/hash-calculator', popular: false },
+  { id: 'timestamp-converter', name: 'Timestamp Converter', description: 'Convert Unix timestamps to human-readable dates and back, with timezone support.', category: 'Developer', icon: '⏱️', url: '/tools/timestamp-converter', popular: false },
+  { id: 'uuid-generator', name: 'UUID Generator', description: 'Generate UUID v4 and v7 identifiers in bulk, copy-ready format.', category: 'Developer', icon: '🆔', url: '/tools/uuid-generator', popular: false },
+  { id: 'url-codec', name: 'URL Encoder / Decoder', description: 'Encode and decode URL components, query strings, and percent-encoding.', category: 'Developer', icon: '🔗', url: '/tools/url-codec', popular: false },
+  { id: 'qrcode', name: 'QR Code Generator', description: 'Create QR codes for URLs, text, Wi-Fi, and vCard. Adjustable size and error correction.', category: 'Utility', icon: '▦', url: '/tools/qrcode', popular: true },
+  { id: 'regex-tester', name: 'Regex Tester', description: 'Test regular expressions with live highlighting, match groups, and flags.', category: 'Developer', icon: '↔', url: '/tools/regex-tester', popular: false },
 ];
