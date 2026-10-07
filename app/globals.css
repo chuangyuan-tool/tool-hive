@@ -2,6 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
+/* === CLASSIC THEME (default) === */
+:root, [data-theme="classic"] {
+  --th-bg: #f9fafb;
+  --th-card-bg: #ffffff;
+  --th-card-border: #f3f4f6;
+  --th-card-border-w: 1px;
+  --th-card-radius: 0.75rem;
+  --th-card-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  --th-accent-1: #3b82f6;
+  --th-accent-2: #8b5cf6;
+  --th-accent-3: #10b981;
+  --th-heading: #111827;
+  --th-body: #4b5563;
+  --th-mono-label: #6b7280;
+  --th-pill-bg: #e0e7ff;
+  --th-pill-text: #312e81;
+  --th-flow-bg: #111827;
+  --th-flow-text: #f9fafb;
+}
+
+/* === EDITORIAL THEME === */
+[data-theme="editorial"] {
+  --th-bg: #f9f7f2;
+  --th-card-bg: #ffffff;
+  --th-card-border: #1a1a1a;
+  --th-card-border-w: 2px;
+  --th-card-radius: 1.25rem;
+  --th-card-shadow: none;
+  --th-accent-1: #ff6b2b;
+  --th-accent-2: #8b5cf6;
+  --th-accent-3: #06d6a0;
+  --th-heading: #1a1a1a;
+  --th-body: #555;
+  --th-mono-label: #999;
+  --th-pill-bg: #1a1a1a;
+  --th-pill-text: #fff;
+  --th-flow-bg: #1a1a1a;
+  --th-flow-text: #fff;
+}
+
 body {
-  @apply bg-gray-50 text-gray-900 antialiased;
+  @apply text-[var(--th-heading)] antialiased;
+  background-color: var(--th-bg);
+}
+
+/* Editorial grid paper background */
+[data-theme="editorial"] body {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Utility classes for editorial */
+.th-card {
+  background: var(--th-card-bg);
+  border: var(--th-card-border-w) solid var(--th-card-border);
+  border-radius: var(--th-card-radius);
+  box-shadow: var(--th-card-shadow);
+}
+
+.th-mono-label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--th-mono-label);
+}
+
+.th-pill {
+  display: inline-block;
+  padding: 0.25rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.th-flow-bar {
+  background: var(--th-flow-bg);
+  color: var(--th-flow-text);
+  border-radius: 0.75rem;
 }

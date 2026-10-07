@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { I18nProvider } from '@/components/I18nProvider';
+import { ThemeProvider } from '@/lib/theme-context';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -20,11 +21,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <I18nProvider>
-          <Navbar />
-          <main className="min-h-[calc(100vh-4rem)]">{children}</main>
-          <Footer />
-        </I18nProvider>
+        <ThemeProvider>
+          <I18nProvider>
+            <Navbar />
+            <main className="min-h-[calc(100vh-4rem)]">{children}</main>
+            <Footer />
+          </I18nProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
