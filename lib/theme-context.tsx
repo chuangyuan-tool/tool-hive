@@ -12,7 +12,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType>({ theme: 'classic', toggle: () => {} });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('classic');
+  const [theme, setTheme] = useState<Theme>('editorial');
 
   useEffect(() => {
     try {

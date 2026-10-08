@@ -1,0 +1,67 @@
+
+> tool-hive@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.0
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/41) ...
+   Generating static pages (10/41) 
+   Generating static pages (20/41) 
+   Generating static pages (30/41) 
+ ✓ Generating static pages (41/41)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    1.08 kB         101 kB
+├ ○ /_not-found                          876 B          87.9 kB
+├ ○ /api-docs                            6.46 kB        93.5 kB
+├ ○ /api-key                             6.58 kB        93.6 kB
+├ ƒ /api/ai/image                        0 B                0 B
+├ ƒ /api/ai/listing                      0 B                0 B
+├ ○ /dashboard                           6.61 kB         100 kB
+├ ○ /icon.svg                            0 B                0 B
+├ ○ /login                               6.58 kB         100 kB
+├ ○ /payment-pending                     921 B          94.8 kB
+├ ○ /payment-success                     1.03 kB        94.9 kB
+├ ○ /pricing                             8.09 kB         102 kB
+├ ○ /privacy                             154 B          87.2 kB
+├ ○ /privacy-policy                      154 B          87.2 kB
+├ ○ /register                            6.67 kB         101 kB
+├ ○ /settings                            6.47 kB        93.5 kB
+├ ○ /terms                               154 B          87.2 kB
+├ ○ /terms-of-service                    154 B          87.2 kB
+├ ○ /tools                               466 B           101 kB
+├ ○ /tools/ai-listing                    3.48 kB        93.9 kB
+├ ○ /tools/ai-product-image              3.24 kB        93.6 kB
+├ ○ /tools/base64-converter              1.69 kB        92.1 kB
+├ ○ /tools/color-picker                  2.05 kB        92.4 kB
+├ ○ /tools/cron-generator                2.34 kB        92.7 kB
+├ ○ /tools/csv-to-json                   2.01 kB        92.4 kB
+├ ○ /tools/data-convert                  49.9 kB         140 kB
+├ ○ /tools/ecom-automation               1.67 kB          92 kB
+├ ○ /tools/hash-calculator               2.69 kB        93.1 kB
+├ ○ /tools/image-compressor              2.29 kB        92.7 kB
+├ ○ /tools/json-formatter                1.81 kB        92.2 kB
+├ ○ /tools/markdown-preview              14.5 kB         105 kB
+├ ○ /tools/password-generator            2.26 kB        92.6 kB
+├ ○ /tools/qrcode                        55.4 kB         146 kB
+├ ○ /tools/regex-tester                  2.14 kB        92.5 kB
+├ ○ /tools/text-tools                    1.55 kB        91.9 kB
+├ ○ /tools/timestamp-converter           1.67 kB          92 kB
+├ ○ /tools/unit-converter                1.77 kB        92.1 kB
+├ ○ /tools/url-codec                     1.88 kB        92.3 kB
+└ ○ /tools/uuid-generator                1.29 kB        91.7 kB
++ First Load JS shared by all            87 kB
+  ├ chunks/7023-6289d5a9654a3945.js      31.4 kB
+  ├ chunks/fd9d1056-35486c6c6fa38774.js  53.6 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

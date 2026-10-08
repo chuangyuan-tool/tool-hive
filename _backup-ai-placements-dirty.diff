@@ -1,0 +1,14 @@
+﻿diff --git a/lib/tools-data.ts b/lib/tools-data.ts
+index 54b092e..87792a1 100644
+--- a/lib/tools-data.ts
++++ b/lib/tools-data.ts
+@@ -9,6 +9,9 @@ export interface Tool {
+ }
+ 
+ export const tools: Tool[] = [
++  { id: 'ai-listing', name: 'AI Listing Generator', description: 'Auto-generate multi-language e-commerce listings for Amazon/Shopify/TikTok.', category: 'AI', icon: '✨', url: '/tools/ai-listing', popular: true },
++  { id: 'ecom-automation', name: 'E-commerce Automation', description: 'Set up automated order/email/logistics workflows with one-click templates.', category: 'AI', icon: '⚡', url: '/tools/ecom-automation', popular: false },
++  { id: 'ai-product-image', name: 'AI Product Images', description: 'Upload a product photo, get white-background / scene / multi-angle images instantly.', category: 'AI', icon: '🖼️', url: '/tools/ai-product-image', popular: true },
+   { id: 'json-formatter', name: 'JSON Formatter', description: 'Format, validate, minify JSON and auto-generate TypeScript types.', category: 'Developer', icon: '{}', url: '/tools/json-formatter', popular: true },
+   { id: 'password-generator', name: 'Password Generator', description: 'Generate strong random passwords with real-time strength analysis.', category: 'Security', icon: '🔐', url: '/tools/password-generator', popular: true },
+   { id: 'base64-converter', name: 'Base64 Converter', description: 'Encode and decode Base64 strings instantly, fully in your browser.', category: 'Developer', icon: '🔄', url: '/tools/base64-converter', popular: false },
