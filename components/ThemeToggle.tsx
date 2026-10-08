@@ -4,12 +4,12 @@ import { useTheme } from '@/lib/theme-context';
 
 export default function ThemeToggle() {
   const { theme, toggle } = useTheme();
+  const trackCls = theme === 'editorial' ? 'bg-[#1a1a1a]' : 'bg-gray-200';
   return (
     <button
       onClick={toggle}
       title={theme === 'classic' ? 'Switch to Editorial theme' : 'Switch to Classic theme'}
-      className="relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none
-        ${theme === 'editorial' ? 'bg-[#1a1a1a]' : 'bg-gray-200'}"
+      className={`relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none ${trackCls}`}
       aria-label="Toggle theme"
     >
       <span
