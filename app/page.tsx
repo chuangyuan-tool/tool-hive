@@ -156,10 +156,10 @@ function HomeEditorial({ t, tools }: { t: any; tools: any[] }) {
             <h3 className="text-lg font-bold text-[#1a1a1a] mb-1">{t.whyFast}</h3>
             <p className="text-sm text-[#555]">{t.whyFastDesc}</p>
           </div>
-          <div className="th-card p-7" style={{ background: '#8b5cf6' }}>
+          <div className="th-card th-card-strip p-7">
             <div className="text-3xl mb-4">🔒</div>
-            <h3 className="text-lg font-bold text-white mb-1">{t.whyPrivate}</h3>
-            <p className="text-sm text-white/80">{t.whyPrivateDesc}</p>
+            <h3 className="text-lg font-bold text-[#1a1a1a] mb-1">{t.whyPrivate}</h3>
+            <p className="text-sm text-[#555]">{t.whyPrivateDesc}</p>
           </div>
           <div className="th-card th-card-strip p-7">
             <div className="text-3xl mb-4">💸</div>

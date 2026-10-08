@@ -6,17 +6,17 @@ import { useI18n } from '@/components/I18nProvider';
 export default function Footer() {
   const { t } = useI18n();
   return (
-    <footer className="bg-white border-t border-gray-200 mt-16">
+    <footer className="bg-[#f9f7f2] border-t-2 border-[#1a1a1a] mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-[#1a1a1a] rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">T</span>
               </div>
-              <span className="text-lg font-bold text-gray-900">ToolHive</span>
+              <span className="text-lg font-bold text-[#1a1a1a]">ToolHive</span>
             </div>
-            <p className="text-gray-500 text-sm">{t.footerTagline}</p>
+            <p className="text-[#555] text-sm">{t.footerTagline}</p>
           </div>
           <div>
             <h3 className="font-semibold text-gray-900 mb-3 text-sm">{t.footerTools}</h3>

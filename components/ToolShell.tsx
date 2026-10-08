@@ -3,13 +3,13 @@
 import type { ReactNode } from 'react';
 import AdSlot from '@/components/ads/AdSlot';
 
-// 工具页统一外壳：顶部/底部自动挂广告位（未配置环境变量时不渲染，零影响现有布局）。
-export default function ToolShell({ children }: { children: ReactNode }) {
+// 工具页统一外壳：editorial 风格页面结构 + 广告位
+export default function ToolShell({ children, title }: { children: ReactNode; title?: string }) {
   return (
-    <>
+    <div className="editorial-tool max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <AdSlot variant="top" />
       {children}
       <AdSlot variant="bottom" />
-    </>
+    </div>
   );
 }
