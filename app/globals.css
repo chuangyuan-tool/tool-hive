@@ -28,11 +28,14 @@
   --th-card-bg: #ffffff;
   --th-card-border: #1a1a1a;
   --th-card-border-w: 2px;
-  --th-card-radius: 1.25rem;
+  --th-card-radius: 20px;
   --th-card-shadow: none;
+  --th-card-pad: 1.75rem;
+  --th-card-gap: 1.5rem;
   --th-accent-1: #ff6b2b;
   --th-accent-2: #8b5cf6;
   --th-accent-3: #06d6a0;
+  --th-accent-4: #fbbf24;
   --th-heading: #1a1a1a;
   --th-body: #555;
   --th-mono-label: #999;
@@ -84,3 +87,21 @@ body {
   color: var(--th-flow-text);
   border-radius: 0.75rem;
 }
+
+/* Colored accent strip on cards */
+.th-card-strip {
+  position: relative;
+  overflow: hidden;
+}
+.th-card-strip::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+}
+.th-card-strip:nth-child(4n+1)::after { background: var(--th-accent-2); }
+.th-card-strip:nth-child(4n+2)::after { background: var(--th-accent-1); }
+.th-card-strip:nth-child(4n+3)::after { background: var(--th-accent-3); }
+.th-card-strip:nth-child(4n+4)::after { background: var(--th-accent-4); }

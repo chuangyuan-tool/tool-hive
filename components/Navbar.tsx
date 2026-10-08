@@ -2,30 +2,16 @@
 
 import Link from 'next/link';
 import { useI18n } from '@/components/I18nProvider';
-import { useTheme } from '@/lib/theme-context';
 import LanguageToggle from '@/components/LanguageToggle';
-import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Navbar() {
   const { t } = useI18n();
-  const { theme } = useTheme();
-  const ed = theme === 'editorial';
-
-  const navLinkCls = ed
-    ? 'text-[#555] hover:text-[#1a1a1a]'
-    : 'text-gray-600 hover:text-gray-900';
-
-  const proBtnCls = ed
-    ? 'bg-[#1a1a1a] hover:bg-[#333] text-white'
-    : 'bg-blue-500 hover:bg-blue-600 text-white';
-
-  const logoBoxCls = ed
-    ? 'bg-[#1a1a1a] text-white'
-    : 'bg-gradient-to-br from-blue-500 to-purple-600 text-white';
-
-  const logoTextCls = ed ? 'text-[#1a1a1a]' : 'text-gray-900';
-  const navBorderCls = ed ? 'border-b-2 border-[#1a1a1a]' : 'border-b border-gray-200';
-  const navBgCls = ed ? 'bg-[#f9f7f2]/90' : 'bg-white/90';
+  const navLinkCls = 'text-[#555] hover:text-[#1a1a1a]';
+  const proBtnCls = 'bg-[#1a1a1a] hover:bg-[#333] text-white';
+  const logoBoxCls = 'bg-[#1a1a1a] text-white';
+  const logoTextCls = 'text-[#1a1a1a]';
+  const navBorderCls = 'border-b-2 border-[#1a1a1a]';
+  const navBgCls = 'bg-[#f9f7f2]/90';
 
   return (
     <nav className={`sticky top-0 z-50 transition-colors duration-300 ${navBgCls} ${navBorderCls} backdrop-blur`}>
@@ -43,7 +29,6 @@ export default function Navbar() {
             <Link href="/dashboard" className={`hidden sm:block text-sm font-medium transition-colors ${navLinkCls}`}>{t.navDashboard}</Link>
             <Link href="/login" className={`hidden sm:block text-sm font-medium transition-colors ${navLinkCls}`}>{t.navLogin}</Link>
             <LanguageToggle />
-            <ThemeToggle />
             <Link href="/pricing" className={`text-sm font-medium px-4 py-2 rounded-lg transition-colors ${proBtnCls}`}>{t.navPro}</Link>
           </div>
         </div>

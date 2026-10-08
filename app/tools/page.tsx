@@ -25,7 +25,7 @@ export default function ToolsPage() {
         </h1>
         <p className="text-lg text-[#555] mb-10">{t.allToolsSub}</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {tools.map((tool, i) => (
             <ToolCard key={tool.id} tool={tool} index={i} />
           ))}

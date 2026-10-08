@@ -111,22 +111,19 @@ function HomeEditorial({ t, tools }: { t: any; tools: any[] }) {
         </h2>
         <p className="text-lg text-[#555] mb-8">{t.allToolsSub}</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {tools.map((tool, i) => (
             <Link
               key={tool.id}
               href={tool.url}
-              className="th-card p-6 block group hover:-translate-y-1 transition-transform duration-200"
+              className="th-card th-card-strip p-7 block group hover:-translate-y-1 transition-transform duration-200"
             >
-              <div className="flex items-start justify-between mb-3">
+              <div className="mb-3">
                 <span className="font-mono text-sm font-bold text-[#1a1a1a]">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                {tool.popular && (
-                  <span className="th-pill bg-[#06d6a0] text-white text-xs">★ Popular</span>
-                )}
               </div>
-              <h3 className="text-xl font-bold text-[#1a1a1a] mb-1 group-hover:underline underline-offset-4">
+              <h3 className="text-xl font-extrabold text-[#1a1a1a] mb-1 group-hover:underline underline-offset-4">
                 {tool.name}
               </h3>
               <p className="text-sm text-[#555] mb-3">{tool.description}</p>
@@ -153,18 +150,18 @@ function HomeEditorial({ t, tools }: { t: any; tools: any[] }) {
         </p>
 
         {/* 3 feature cards in a row */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-          <div className="th-card p-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-7 mb-8">
+          <div className="th-card th-card-strip p-7">
             <div className="text-3xl mb-4">⚡</div>
             <h3 className="text-lg font-bold text-[#1a1a1a] mb-1">{t.whyFast}</h3>
             <p className="text-sm text-[#555]">{t.whyFastDesc}</p>
           </div>
-          <div className="th-card p-6" style={{ background: '#8b5cf6' }}>
+          <div className="th-card p-7" style={{ background: '#8b5cf6' }}>
             <div className="text-3xl mb-4">🔒</div>
             <h3 className="text-lg font-bold text-white mb-1">{t.whyPrivate}</h3>
             <p className="text-sm text-white/80">{t.whyPrivateDesc}</p>
           </div>
-          <div className="th-card p-6">
+          <div className="th-card th-card-strip p-7">
             <div className="text-3xl mb-4">💸</div>
             <h3 className="text-lg font-bold text-[#1a1a1a] mb-1">{t.whyFree}</h3>
             <p className="text-sm text-[#555]">{t.whyFreeDesc}</p>
