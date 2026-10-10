@@ -24,15 +24,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" data-theme="editorial">
-      <head>
-        {CF_ANALYTICS_TOKEN && (
-          <Script
-            src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon={JSON.stringify({ token: CF_ANALYTICS_TOKEN })}
-            strategy="afterInteractive"
-          />
-        )}
-      </head>
       <body className={inter.className}>
         <ThemeProvider>
           <I18nProvider>
@@ -41,6 +32,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <Footer />
           </I18nProvider>
         </ThemeProvider>
+        <Script
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: CF_ANALYTICS_TOKEN })}
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
