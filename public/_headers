@@ -1,0 +1,22 @@
+# Cloudflare Pages _headers
+# 构建后此文件会被复制到 out/_headers，部署时 Cloudflare Pages 自动读取
+#
+# 规则（从上到下匹配，命中即停）：
+
+# 1) HTML 页面 → 不缓存，每次取最新
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# 2) Next.js 带哈希的静态资源 → 永久缓存（文件名变了就自动刷新）
+/_next/static/chunks/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/_next/static/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/_next/static/media/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 3) 根路径（首页）也强制不缓存
+/:
+  Cache-Control: public, max-age=0, must-revalidate
