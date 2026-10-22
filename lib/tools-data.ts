@@ -24,4 +24,9 @@ export const tools: Tool[] = [
   { id: 'url-codec', name: 'URL Encoder / Decoder', description: 'Encode and decode URL components, query strings, and percent-encoding.', category: 'Developer', icon: '🔗', url: '/tools/url-codec', popular: false },
   { id: 'qrcode', name: 'QR Code Generator', description: 'Create QR codes for URLs, text, Wi-Fi, and vCard. Adjustable size and error correction.', category: 'Utility', icon: '▦', url: '/tools/qrcode', popular: true },
   { id: 'regex-tester', name: 'Regex Tester', description: 'Test regular expressions with live highlighting, match groups, and flags.', category: 'Developer', icon: '↔', url: '/tools/regex-tester', popular: false },
+  { id: 'cron-generator', name: 'Cron Generator', description: 'Build and decode cron expressions with a human-readable explanation and next-run preview.', category: 'Developer', icon: '🗓️', url: '/tools/cron-generator', popular: false },
+  { id: 'unit-converter', name: 'Unit Converter', description: 'Convert length, weight, temperature, and more across metric and imperial units.', category: 'Utility', icon: '📐', url: '/tools/unit-converter', popular: true },
+  { id: 'markdown-preview', name: 'Markdown Preview', description: 'Write Markdown with live HTML preview, GitHub-style rendering in your browser.', category: 'Writing', icon: '📝', url: '/tools/markdown-preview', popular: false },
+  { id: 'jwt-decoder', name: 'JWT Decoder', description: 'Decode and inspect JSON Web Tokens — header and payload, no upload.', category: 'Developer', icon: '🔑', url: '/tools/jwt-decoder', popular: false },
+  { id: 'text-diff', name: 'Text Diff', description: 'Compare two blocks of text and highlight added and removed words instantly.', category: 'Developer', icon: '⇄', url: '/tools/text-diff', popular: false },
 ];
