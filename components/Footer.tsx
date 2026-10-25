@@ -39,8 +39,8 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-gray-900 mb-3 text-sm">{t.footerLegal}</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/privacy" className="text-gray-500 hover:text-gray-900">{t.privacy}</Link></li>
-              <li><Link href="/terms" className="text-gray-500 hover:text-gray-900">{t.terms}</Link></li>
+              <li><Link href="/privacy-policy" className="text-gray-500 hover:text-gray-900">{t.privacy}</Link></li>
+              <li><Link href="/terms-of-service" className="text-gray-500 hover:text-gray-900">{t.terms}</Link></li>
             </ul>
           </div>
         </div>

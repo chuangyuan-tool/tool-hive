@@ -1,5 +1,8 @@
 export const metadata = {
   title: 'Privacy Policy',
+  description:
+    'How ToolHive handles your data: every browser-side tool runs locally, so your files and text are never uploaded. Here is exactly what is and is not collected.',
+  alternates: { canonical: 'https://toolhive.com.cn/privacy-policy' },
 };
 
 export default function PrivacyPolicyPage() {

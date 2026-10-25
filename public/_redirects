@@ -1,0 +1,6 @@
+# Cloudflare Pages 重定向规则
+# 站内曾有两组重复的法律页（/privacy 与 /privacy-policy 内容几乎一致）。
+# 已删除旧的一组，这里 301 到保留的版本，避免老外链 404、也避免权重摊薄。
+
+/privacy      /privacy-policy    301
+/terms        /terms-of-service  301

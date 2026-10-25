@@ -1,5 +1,8 @@
 export const metadata = {
   title: 'Terms of Service',
+  description:
+    'Terms for using ToolHive: plan limits, subscription billing and cancellation, acceptable use, and the disclaimers that apply to tool output.',
+  alternates: { canonical: 'https://toolhive.com.cn/terms-of-service' },
 };
 
 export default function TermsOfServicePage() {
