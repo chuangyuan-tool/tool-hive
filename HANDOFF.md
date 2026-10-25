@@ -1,43 +1,96 @@
-# ToolHive 出海部署 — 交接单（HANDOFF）
+# ToolHive 交接单
 
-> 给接手的新会话 / 老板看。代码侧全就绪，卡点在「网络 + 几个要老板账号配合的点击」。
+> 更新：2026-10-26。**这份是唯一准确的现状**。旧版（9-19）已删，里面的"未 push""Vercel 部署""阿里云 DNS"全部作废。
 
-## 项目
-- 路径：`E:\deepseek harness工作区\tool-hive`
-- 品牌：**ToolHive**（目录名 tool-hive），Next.js 14 出海开发者工具站
-- 定价：**Pro $9/月、Team $29/月**（已定）
-- 域名：`toolhive.com.cn`（**阿里云**购买）
-- 收款：大陆个人，走 **Creem**（卡/USDT/PayPal/钱包一站式 + 帮管海外税），提现走万里汇/万里通
+## 一、现在到底是什么状态
 
-## 一、代码侧（已全部完成，可直接部署）
-- build 通过（21 页面零报错），可 `npm run build`
-- git 已 init + commit（66 个干净文件，`.gitignore` 已排除 node_modules/.next/备份/本地脚本）；**尚未 push**（等 GitHub 空仓库）
-- **收款区**：`app/pricing/page.tsx` 用 Creem 占位——`CREEM_PRO_LINK`/`CREEM_TEAM_LINK` 常量（空时显示"卡/币支付开通中，可先用 USDT/邮箱"，填了链接按钮即亮）；保留 USDT(TRC20) 地址 + 邮箱兜底；**已删大陆 PayPal 死路**
-- **广告/联盟（占位，未配 ID 不显示）**：`components/ads/AdSlot.tsx`（AdSense，`NEXT_PUBLIC_ADSENSE_CLIENT/SLOT` 开关）、`components/ToolShell.tsx`（工具页顶/底挂广告，6 个工具页已套上）、`components/ads/AffiliateBlock.tsx`（联盟推荐位）
-- **文档**：`DEPLOY.md`（大白话 9 步上线手册）、`出海网站上线工作流.md`（可复用到未来新网站）
-- **开机自启**：`start-website.vbs` 已改**静默**（后台起 server、不自动弹浏览器；3000 留作本地自用）
+| 项 | 状态 | 证据 |
+|---|---|---|
+| 线上站 | ✅ 正常 | https://toolhive.com.cn 返回 200 |
+| 托管 | ✅ **Cloudflare Pages**（不是 Vercel） | `wrangler pages project list` |
+| 自动部署 | ✅ 已连 Git，push master 就构建 | 最新部署 commit = 本地 HEAD |
+| GitHub 仓库 | ✅ **已公开** | `chuangyuan-tool/tool-hive`，匿名 API 返回 200 |
+| 域名 DNS | ✅ Cloudflare 托管 | NS = etienne/emerie.ns.cloudflare.com |
+| Creem 收款 | ✅ 两条 checkout 链接已填、可跳转 | `app/pricing/page.tsx` |
+| 工具数 | 30 个页面，其中 20 个已上架导航 | `lib/tools-data.ts` vs `app/tools/` |
+| 搜索引擎收录 | ⚠️ **只收录了首页**，工具页 0 收录 | `site:toolhive.com.cn` |
 
-## 二、还没做（需老板账号 + 网络）
-1. **GitHub 空仓库 tool-hive** 未建、代码未 push。（本机 GCM 已登录 github，但 `git credential fill` 取不到 token，建仓库要老板网页点）
-2. **Vercel** 导入 + 部署 + 绑 `toolhive.com.cn`（需翻墙开 vercel.com）
-3. **阿里云 DNS** 加记录：A `@` → Vercel IP；CNAME `www` → `cname.vercel-dns.com`
-4. **Creem 申请**（老板 creem.io 注册 + 人脸 → 建 Pro/Team 订阅 → 发 2 条 checkout 链接给我 → 我填进 pricing）
-5. 广告 AdSense / 联盟：上线后在 Vercel 加 env 激活
+**旧 HANDOFF 里这些说法全是错的，别再照着做**：
 
-## 三、网络现状（关键卡点，会随时间变化）
-- **直连 github：通但抖**（200 与 000 交替）
-- **加速器端口 10808/10809：当前不可用**（走它连 google / vercel 全 000）
-- **vercel.com 大陆直连打不开，必须翻墙**
-- 解法：老板去加速器 App「重连 / 换节点」（**不改朋友配置**）→ 10809 通了之后，刷新 `github.com/new` 与 `vercel.com` 都能进
+- 错：「Vercel 导入部署」→ 实际是 Cloudflare Pages，早部署完了
+- 错：「阿里云 DNS 加 A 记录」→ 域名已迁到 Cloudflare
+- 错：「git 尚未 push」→ 早就推了
+- 错：「仓库私有」→ 是公开的
+- 错：「要翻墙开 vercel.com」→ 不需要，走 Cloudflare
+- 错：「加速器 10809 不可用」→ 跟上线无关
 
-## 四、老板待办（按顺序）
-1. 加速器 App：重连/换节点 → Edge 打开 **vercel.com** 能开=网络 OK
-2. **github.com/new** 建 `tool-hive` 空仓库（不勾 README/.gitignore/license）→ 把地址发 AI
-3. AI：`git remote add origin <url>` + `git push -u origin master`（直连 github 通即可推）
-4. Vercel：New Project → Import `tool-hive` → Deploy → 绑 `toolhive.com.cn`，记下它给的 DNS 值
-5. 阿里云 DNS：A `@` = Vercel IP；CNAME `www` = `cname.vercel-dns.com` → 等 5min~1h 生效
-6. 上线后 → creem.io 申请 → 发 2 条 checkout 链接 → AI 填 pricing → 自动收款
-7. （可选，上线后）监控三件套（UptimeRobot/Sentry/定时探活）+ 域名续费提醒
+## 二、真正的卡点：不是上线，是没人来
 
-## 五、给新会话 AI 的启动指令（复制这段去新会话）
-> 我在把 ToolHive（Next.js 出海工具站）部署上线，代码已就绪、git 已 commit 未 push。项目路径 `E:\deepseek harness工作区\tool-hive`。**先读该目录下 `HANDOFF.md`、`DEPLOY.md`、`出海网站上线工作流.md` 了解全貌**（别重做代码侧）。当前卡点：①网络（加速器 10809 不可用、vercel.com 需翻墙、直连 github 抖）② GitHub 空仓库未建。老板会把仓库 URL 给我：我就 `git remote add origin <url>` + `git push -u origin master`，然后带老板走 Vercel 导入部署 + 阿里云 DNS 绑定。收款用 Creem 占位（`app/pricing/page.tsx` 的 `CREEM_PRO_LINK/TEAM_LINK`），等老板申请 Creem 发 2 条 checkout 链接，我填入即可。
+站能开、能收款，但 Google 只认首页。原因（已修）：
+
+1. 46 个页面共用同一个 `<title>`（继承 layout），Google 当成同一页
+   → 已给 30 个工具页配独立 title / description / canonical
+2. `/sitemap.xml` 是 404 → 已生成，25 条 URL
+3. `/robots.txt` 只有 Cloudflare 默认内容，没有 sitemap 声明 → 已生成
+4. `/privacy` 与 `/privacy-policy` 内容重复、页脚同时链两个
+   → 已删旧的，301 到新的
+5. README 写着"6 个工具""PayPal 收款"，与实际严重不符 → 已重写
+
+## 三、已经做掉的自动化动作
+
+- IndexNow 推送：Bing / Yandex / api.indexnow.org 全部 HTTP 202 接受
+  - 脚本：`node scripts/indexnow.mjs`（可重复跑，以后上新工具就推一次）
+  - key 文件：`public/cee07103bdcd149839132deb7ec73e8b.txt`
+- GitHub 仓库描述、homepage、12 个 topics 已设
+
+## 四、下一步（老板要做的一件事）
+
+**Google Search Console 验证域名** —— 只有这一步必须老板本人做（要 Google 账号）。
+
+1. 打开 https://search.google.com/search-console → 选「网域」→ 填 `toolhive.com.cn`
+2. 复制它给的 TXT 记录，发给 AI
+3. AI 加到 Cloudflare DNS，老板回 GSC 点验证
+4. 验证过后提交 `sitemap.xml`
+
+详细步骤和后续推广文案都在 `PROMOTION.md`。
+
+## 五、给新会话 AI 的启动指令
+
+> ToolHive 已上线（Cloudflare Pages + toolhive.com.cn），代码在 `E:\deepseek harness工作区\tool-hive`。
+> **先读 `HANDOFF.md`（本文件）和 `PROMOTION.md`，不要读旧文档的部署章节。**
+> 关键事实：托管是 Cloudflare Pages 不是 Vercel；push master 自动部署；仓库已公开；Creem 链接已填。
+> 当前阶段是「拉流量」，不是「搞上线」。别重做部署、别再提 free-for-dev PR（明确拒绝工具站）。
+
+## 六、常用命令
+
+```bash
+cd "E:\deepseek harness工作区\tool-hive"
+
+npm run build                                                   # 静态导出到 out/
+git push origin master                                          # 触发 Cloudflare 自动构建
+npx wrangler pages deployment list --project-name tool-hive     # 看部署状态
+node scripts/indexnow.mjs                                       # 推 sitemap 给 Bing/Yandex
+node scripts/indexnow.mjs --dry-run                             # 只打印不发送
+node test/convert-smoke.mjs                                     # YAML/XML 转换冒烟测试
+```
+
+## 七、上架储备工具的方法
+
+`app/tools/` 下有 30 个工具目录，`lib/tools-data.ts` 只注册了 20 个。要上架新的：
+
+1. `lib/tools-data.ts` 加一条记录（id 用目录名）
+2. `lib/tool-seo.ts` 把对应条目的 `live` 改成 `true`（改完才会进 sitemap）
+3. build + push，5 分钟
+
+当前未上架的 10 个：base-converter, case-converter, css-minifier, data-convert,
+json-validator, lorem-ipsum, number-base, slug-generator, text-tools, word-counter
+
+这 10 个页面线上**可访问但带 noindex**，不会稀释索引权重。
+
+## 八、红线（别翻旧账）
+
+- 托管平台是 Cloudflare Pages，不是 Vercel —— 别再提 Vercel
+- 域名在 Cloudflare，不在阿里云 —— 别再提阿里云 DNS
+- 收款是 Creem + USDT，PayPal 已删 —— 别再提 PayPal
+- 不装 FreeLLMAPI / 破甲软件 —— 已在 AGENTS.md 决策
+- free-for-dev 明确拒绝工具站 —— 别再提这个 PR
